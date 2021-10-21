@@ -1,7 +1,6 @@
-require('dotenv').config();
-// import dotenv from 'dotenv';
+import dotenv from 'dotenv';
 
-// dotenv.config({ path: '../.env' });
+dotenv.config();
 
 const { PORT } = process.env;
 
