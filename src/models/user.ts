@@ -15,7 +15,16 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: true,
   },
-  passwordHash: String,
+  passwordHash: {
+    type: String,
+    required: true,
+  },
+  cards: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Card',
+    },
+  ],
 });
 
 userSchema.plugin(uniqueValidator);

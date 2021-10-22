@@ -6,6 +6,8 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import config from './utils/config';
 import usersRouter from './routes/users';
+import cardsRouter from './routes/cards';
+import loginRouter from './routes/login';
 import logger from './utils/logger';
 import middleware from './utils/middleware';
 
@@ -27,6 +29,8 @@ app.use(express.json());
 app.use(middleware.requestLogger);
 
 app.use('/api/users/', usersRouter);
+app.use('/api/cards/', cardsRouter);
+app.use('/api/login/', loginRouter);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);

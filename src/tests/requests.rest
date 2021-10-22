@@ -2,8 +2,28 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-  "email": "1@gmail.com", 
-  "name": "2", 
-  "surname": "3", 
-  "password": "4"
+  "email": "root@gmail.com", 
+  "name": "firstname", 
+  "surname": "lastname", 
+  "password": "root"
+}
+
+###
+POST http://localhost:3001/api/login 
+Content-Type: application/json
+
+{
+  "email": "root@gmail.com", 
+  "password": "root"
+}
+
+###
+POST http://localhost:3001/api/cards 
+Content-Type: application/json 
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAZ21haWwuY29tIiwiaWQiOiI2MTcwZWEwMTE3NWY2MWNiYzEyYzZjYWIiLCJpYXQiOjE2MzQ3ODk4OTMsImV4cCI6MTYzNDc5MzQ5M30.Mm-ntZ05Ish6n7vwOcBr6MqVdRji3NMnRjJv8IziBRQ
+
+{
+  "front": "this is the front", 
+  "back": "this is the back", 
+  "level": 2
 }
