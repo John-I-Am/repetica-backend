@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
+    "build:ui": "rm -rf build && cd ../repetica-frontend/ && npm run build && mv build ../repetica-backend",
     "lint": "eslint --ext .ts .",
     "dev": "NODE_ENV=development ts-node-dev src/index.ts",
-    "start": "node build src/index.ts"
+    "start": "npm run tsc && node build-server/index.js"
   },
   "author": "",
   "license": "ISC",
