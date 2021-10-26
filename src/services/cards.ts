@@ -4,8 +4,15 @@ import Card from '../models/card';
 import User from '../models/user';
 import { NewCard, decodedToken } from '../types';
 
-const getAllCards = async () => {
-  const cards = await Card.find({}).populate('user', { username: 1, name: 1 });
+const getAllCards = async (token: string | null) => {
+  const decodedResult = jwt.verify(token as string, process.env.SECRET as string) as decodedToken;
+  if (!token || !decodedResult.id) {
+    return false;
+  }
+
+  const cards = await Card.find({ user: decodedResult.id });
+
+  // const cards = await Card.find({}).populate('user', { username: 1, name: 1 });
   return cards;
 };
 

@@ -12,7 +12,7 @@ const getTokenFrom = (request: Request) => {
 const cardsRouter = require('express').Router();
 
 cardsRouter.get('/', async (request: Request, response: Response) => {
-  const cards = await cardService.getAllCards();
+  const cards = await cardService.getAllCards(getTokenFrom(request));
   response.json(cards);
 });
 
