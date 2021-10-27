@@ -7,9 +7,13 @@
     "test": "NODE_ENV=test jest --verbose --runInBand",
     "tsc": "tsc",
     "build:ui": "rm -rf build && cd ../repetica-frontend/ && npm run build && mv build ../repetica-backend",
+    "deploy": "git push heroku main",
+    "deploy:full": "npm run build:ui && git add . && git commit -m 'Deploy to Heroku' && git push && npm run deploy",
     "lint": "eslint --ext .ts .",
+    "logs:prod": "heroku logs --tail",
     "dev": "NODE_ENV=development ts-node-dev src/index.ts",
-    "start": "npm run tsc && node build-server/index.js"
+    "start": "NODE_ENV=production npm run tsc && node build-server/index.js",
+    "start:test": "NODE_ENV=test npm run tsc && node build-server/index.js"
   },
   "author": "",
   "license": "ISC",
