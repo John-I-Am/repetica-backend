@@ -2,9 +2,9 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-  "email": "root@gmail.com", 
-  "name": "firstname", 
-  "surname": "lastname", 
+  "email": "root@root.com", 
+  "name": "rootname", 
+  "surname": "rootsur", 
   "password": "root"
 }
 
@@ -13,17 +13,27 @@ POST http://localhost:3001/api/login
 Content-Type: application/json
 
 {
-  "email": "root@gmail.com", 
+  "email": "root@root.com", 
   "password": "root"
 }
 
 ###
+GET http://localhost:3001/api/cards 
+Content-Type: application/json 
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxNzljN2RlYTc0NWM3NGRkMWNkZmViOCIsImlhdCI6MTYzNTM3MDk3NywiZXhwIjoxNjM1Mzc0NTc3fQ.rSQ-7HxQHa1Zkf_6GJEvZE_AzsRoJWpRm6is9QFaG0U
+
+###
 POST http://localhost:3001/api/cards 
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAZ21haWwuY29tIiwiaWQiOiI2MTcwZWEwMTE3NWY2MWNiYzEyYzZjYWIiLCJpYXQiOjE2MzQ3ODk4OTMsImV4cCI6MTYzNDc5MzQ5M30.Mm-ntZ05Ish6n7vwOcBr6MqVdRji3NMnRjJv8IziBRQ
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxNzljN2RlYTc0NWM3NGRkMWNkZmViOCIsImlhdCI6MTYzNTM3MDk3NywiZXhwIjoxNjM1Mzc0NTc3fQ.rSQ-7HxQHa1Zkf_6GJEvZE_AzsRoJWpRm6is9QFaG0U
 
 {
-  "front": "this is the front", 
-  "back": "this is the back", 
+  "front": "hello", 
+  "back": "bye", 
   "level": 2
 }
+
+###
+DELETE http://localhost:3001/api/cards/6179c7f4a745c74dd1cdfebe
+Content-Type: application/json 
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxNzljN2RlYTc0NWM3NGRkMWNkZmViOCIsImlhdCI6MTYzNTM3MDk3NywiZXhwIjoxNjM1Mzc0NTc3fQ.rSQ-7HxQHa1Zkf_6GJEvZE_AzsRoJWpRm6is9QFaG0U
