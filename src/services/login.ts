@@ -19,7 +19,12 @@ const fetchUser = async (userToFetch: UserCredential) => {
   };
 
   const token = jwt.sign(userForToken, process.env.SECRET as string, { expiresIn: 60 * 60 });
-  return { token, email: user.email };
+  return {
+    token,
+    email: user.email,
+    name: user.name,
+    surname: user.surname,
+  };
 };
 
 export default fetchUser;
