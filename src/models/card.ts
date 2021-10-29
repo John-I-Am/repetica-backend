@@ -18,7 +18,11 @@ const cardSchema = new mongoose.Schema({
     min: 1,
     max: 5,
   },
-  date: {
+  creationDate: {
+    type: Date,
+    required: true,
+  },
+  checkpointDate: {
     type: Date,
     required: true,
   },

@@ -29,7 +29,9 @@ const postCard = async (cardToPost: NewCard, token: string | null) => {
 
   const user = await User.findById(decodedResult.id) as any;
 
-  const card = new Card({ ...cardToPost, date: new Date(), user: user._id });
+  const card = new Card({
+    ...cardToPost, creationDate: new Date(), checkpointDate: new Date(), user: user._id,
+  });
 
   const savedCard = await card.save();
   user.cards = user.cards.concat(savedCard._id);
