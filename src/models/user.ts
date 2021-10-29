@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
 import mongoose from 'mongoose';
-import uniqueValidator from 'mongoose-unique-validator';
+// import uniqueValidator from 'mongoose-unique-validator';
 import { ExistingUser } from '../types';
 
 const userSchema = new mongoose.Schema({
@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    unique: true,
+    // unique: true,
   },
   passwordHash: {
     type: String,
@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
   ],
 });
 
-userSchema.plugin(uniqueValidator);
+// userSchema.plugin(uniqueValidator);
 
 userSchema.set('toJSON', {
   transform: (_document: any, returnedObject: any) => {
