@@ -20,15 +20,15 @@ Content-Type: application/json
 ###
 GET http://localhost:3001/api/cards 
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxN2UwZjMxZTRkNjQxZmNiMWZiZTEwMiIsImlhdCI6MTYzNTY1MTM4MSwiZXhwIjoxNjM1NjU0OTgxfQ.j3a-cuE7cTdilenF_fokLTl82AM8Fkv6VApaqdUYDlg
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxN2UwZjMxZTRkNjQxZmNiMWZiZTEwMiIsImlhdCI6MTYzNTcwMzAwMSwiZXhwIjoxNjM1NzA2NjAxfQ.H25UiN7TcpIlKzxvxEwuSHj4AN0bnl7B5fjhdx0LNKM
 
 ###
 POST http://localhost:3001/api/cards 
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxN2UwZjMxZTRkNjQxZmNiMWZiZTEwMiIsImlhdCI6MTYzNTY1Mzc2NCwiZXhwIjoxNjM1NjU3MzY0fQ.B3DUR56q_4-tY4OOZbyfcJk_jhA5cJ1SpglSmEAP1PI
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxN2UwZjMxZTRkNjQxZmNiMWZiZTEwMiIsImlhdCI6MTYzNTcxMjk5NCwiZXhwIjoxNjM1NzE2NTk0fQ.9e5i8zTDLb4co_l7nTVHjqUlpkjE0DFIy2BrfQB8kd0
 
 {
-  "front": "test", 
+  "front": 4, 
   "back": "[]", 
   "level": 2
 }
@@ -36,7 +36,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAc
 ###
 PUT http://localhost:3001/api/cards/617e1899083d1b7ae18e9fee
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxN2UwZjMxZTRkNjQxZmNiMWZiZTEwMiIsImlhdCI6MTYzNTY1Mzc2NCwiZXhwIjoxNjM1NjU3MzY0fQ.B3DUR56q_4-tY4OOZbyfcJk_jhA5cJ1SpglSmEAP1PI
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxN2UwZjMxZTRkNjQxZmNiMWZiZTEwMiIsImlhdCI6MTYzNTcxMjk5NCwiZXhwIjoxNjM1NzE2NTk0fQ.9e5i8zTDLb4co_l7nTVHjqUlpkjE0DFIy2BrfQB8kd0
 
 {
   "front": "test", 
@@ -45,6 +45,6 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAc
 }
 
 ###
-DELETE http://localhost:3001/api/cards/6179c7f4a745c74dd1cdfebe
+DELETE http://localhost:3001/api/cards/617e0f48e4d641fcb1fbe106
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxNzljN2RlYTc0NWM3NGRkMWNkZmViOCIsImlhdCI6MTYzNTM3MDk3NywiZXhwIjoxNjM1Mzc0NTc3fQ.rSQ-7HxQHa1Zkf_6GJEvZE_AzsRoJWpRm6is9QFaG0U
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxN2UwZjMxZTRkNjQxZmNiMWZiZTEwMiIsImlhdCI6MTYzNTcwMzAwMSwiZXhwIjoxNjM1NzA2NjAxfQ.H25UiN7TcpIlKzxvxEwuSHj4AN0bnl7B5fjhdx0LNKM

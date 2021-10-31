@@ -21,7 +21,7 @@ const errorHandler = (error: Error, request: Request, response: Response, next: 
     return response.status(400).json({ error: error.message });
   } if (error.name === 'JsonWebTokenError') {
     return response.status(401).json({ error: 'invalid token' });
-  } if (error.name === 'MongoServerError') {
+  } if (error.name === 'ParseError') {
     return response.status(400).json({ error: error.message });
   }
 

@@ -2,6 +2,7 @@
 import { Response, Request } from 'express';
 import cardService from '../services/cards';
 import { ExistingCard, NewCard } from '../types';
+import typeguards from '../typeguards';
 
 const getTokenFrom = (request: Request): string | null => {
   const authorization: string | undefined = request.get('authorization');
@@ -28,11 +29,10 @@ cardsRouter.get('/:id', async (request: Request, response: Response) => {
 });
 
 cardsRouter.post('/', async (request: Request, response: Response) => {
-  const result: ExistingCard | false = await cardService.postCard({
-    front: request.body.front,
-    back: request.body.back,
-    level: request.body.level,
-  }, getTokenFrom(request));
+  const newCard: NewCard = typeguards.toNewCard(request.body);
+  const result: ExistingCard | false = await cardService.postCard(
+    newCard, getTokenFrom(request),
+  );
 
   if (!result) {
     return response.status(401).json({ error: 'token missing or invalid' });
@@ -47,13 +47,9 @@ cardsRouter.delete('/:id', async (request: Request, response: Response) => {
 });
 
 cardsRouter.put('/:id', async (request: Request, response: Response) => {
-  const updatedCard: NewCard = {
-    front: request.body.front,
-    back: request.body.back,
-    level: request.body.level,
-  };
+  const newCard: NewCard = typeguards.toNewCard(request.body);
 
-  const result = await cardService.updateCard(updatedCard, request.params.id, getTokenFrom(request));
+  const result = await cardService.updateCard(newCard, request.params.id, getTokenFrom(request));
   response.json(result);
 });
 

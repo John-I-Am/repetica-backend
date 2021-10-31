@@ -1,18 +1,15 @@
 import { Response, Request } from 'express';
 import userService from '../services/users';
+import typeguards from '../typeguards';
+import { NewUser } from '../types';
 
 const usersRouter = require('express').Router();
 
 usersRouter.post('/', async (request: Request, response: Response) => {
-  const user = {
-    email: request.body.email,
-    name: request.body.name,
-    surname: request.body.surname,
-    password: request.body.password,
-  };
+  const newUser: NewUser = typeguards.toNewUser(request.body);
 
-  const newUser = await userService.addUser(user);
-  response.json(newUser);
+  const result = await userService.addUser(newUser);
+  response.json(result);
 });
 
 export default usersRouter;
