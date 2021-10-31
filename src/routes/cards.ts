@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Response, Request } from 'express';
 import cardService from '../services/cards';
 
@@ -51,7 +52,7 @@ cardsRouter.put('/:id', async (request: Request, response: Response) => {
     level: request.body.level,
   };
 
-  const result = await cardService.updateCard(updatedCard, request.params.id);
+  const result = await cardService.updateCard(updatedCard, request.params.id, getTokenFrom(request));
   response.json(result);
 });
 

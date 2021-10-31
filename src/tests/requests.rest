@@ -20,16 +20,27 @@ Content-Type: application/json
 ###
 GET http://localhost:3001/api/cards 
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxNzljN2RlYTc0NWM3NGRkMWNkZmViOCIsImlhdCI6MTYzNTM3MDk3NywiZXhwIjoxNjM1Mzc0NTc3fQ.rSQ-7HxQHa1Zkf_6GJEvZE_AzsRoJWpRm6is9QFaG0U
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxN2UwZjMxZTRkNjQxZmNiMWZiZTEwMiIsImlhdCI6MTYzNTY1MTM4MSwiZXhwIjoxNjM1NjU0OTgxfQ.j3a-cuE7cTdilenF_fokLTl82AM8Fkv6VApaqdUYDlg
 
 ###
 POST http://localhost:3001/api/cards 
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxNzljN2RlYTc0NWM3NGRkMWNkZmViOCIsImlhdCI6MTYzNTM3MDk3NywiZXhwIjoxNjM1Mzc0NTc3fQ.rSQ-7HxQHa1Zkf_6GJEvZE_AzsRoJWpRm6is9QFaG0U
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxN2UwZjMxZTRkNjQxZmNiMWZiZTEwMiIsImlhdCI6MTYzNTY1Mzc2NCwiZXhwIjoxNjM1NjU3MzY0fQ.B3DUR56q_4-tY4OOZbyfcJk_jhA5cJ1SpglSmEAP1PI
 
 {
-  "front": "hello", 
-  "back": "bye", 
+  "front": "test", 
+  "back": "[]", 
+  "level": 2
+}
+
+###
+PUT http://localhost:3001/api/cards/617e1899083d1b7ae18e9fee
+Content-Type: application/json 
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxN2UwZjMxZTRkNjQxZmNiMWZiZTEwMiIsImlhdCI6MTYzNTY1Mzc2NCwiZXhwIjoxNjM1NjU3MzY0fQ.B3DUR56q_4-tY4OOZbyfcJk_jhA5cJ1SpglSmEAP1PI
+
+{
+  "front": "test", 
+  "back": "[]", 
   "level": 2
 }
 

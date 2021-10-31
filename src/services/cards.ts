@@ -1,3 +1,5 @@
+/* eslint-disable no-else-return */
+/* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 import jwt from 'jsonwebtoken';
 import Card from '../models/card';
@@ -43,8 +45,19 @@ const deleteCard = async (id: string) => {
   await Card.findByIdAndRemove(id);
 };
 
-const updateCard = async (updatedCard: NewCard, id: string) => {
-  const result = Card.findByIdAndUpdate(id, { ...updatedCard }, { new: true });
+const updateCard = async (updatedCard: NewCard, id: string, token: string | null) => {
+  const decodedResult = jwt.verify(token as string, process.env.SECRET as string) as decodedToken;
+  if (!token || !decodedResult.id) {
+    return false;
+  }
+
+  const cardToUpdate: any = await Card.findById(id);
+  const currentCheckpoint = cardToUpdate.checkpointDate.getTime();
+
+  // formula for adding time: min * 60000
+  const result: any = await Card.findByIdAndUpdate(id, { ...updatedCard, checkpointDate: new Date(currentCheckpoint + (60 * 60000)) },
+    { new: true });
+
   return result;
 };
 
