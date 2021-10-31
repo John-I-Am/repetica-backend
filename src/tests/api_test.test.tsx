@@ -9,6 +9,7 @@ import User from '../models/user';
 import bcrypt from 'bcrypt';
 import helper from './helper';
 import app from '../app';
+import { ExistingUser } from '../types';
 
 const api = supertest(app);
 
@@ -16,8 +17,8 @@ describe('where there is initially one user', () => {
   beforeEach(async () => {
     await User.deleteMany({});
 
-    const passwordHash = await bcrypt.hash('root', 10);
-    const user = new User({
+    const passwordHash: string = await bcrypt.hash('root', 10);
+    const user: ExistingUser = new User({
       name: 'rootname', surname: 'rootsurname', passwordHash, email: 'root@root.com',
     });
 

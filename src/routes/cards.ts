@@ -1,9 +1,10 @@
 /* eslint-disable max-len */
 import { Response, Request } from 'express';
 import cardService from '../services/cards';
+import { ExistingCard, NewCard } from '../types';
 
-const getTokenFrom = (request: Request) => {
-  const authorization = request.get('authorization');
+const getTokenFrom = (request: Request): string | null => {
+  const authorization: string | undefined = request.get('authorization');
   if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
     return authorization.substring(7);
   }
@@ -27,7 +28,7 @@ cardsRouter.get('/:id', async (request: Request, response: Response) => {
 });
 
 cardsRouter.post('/', async (request: Request, response: Response) => {
-  const result = await cardService.postCard({
+  const result: ExistingCard | false = await cardService.postCard({
     front: request.body.front,
     back: request.body.back,
     level: request.body.level,
@@ -46,7 +47,7 @@ cardsRouter.delete('/:id', async (request: Request, response: Response) => {
 });
 
 cardsRouter.put('/:id', async (request: Request, response: Response) => {
-  const updatedCard = {
+  const updatedCard: NewCard = {
     front: request.body.front,
     back: request.body.back,
     level: request.body.level,

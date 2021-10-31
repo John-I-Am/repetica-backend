@@ -3,7 +3,7 @@
 import mongoose from 'mongoose';
 import { ExistingCard } from '../types';
 
-const cardSchema = new mongoose.Schema({
+const cardSchema: mongoose.Schema = new mongoose.Schema({
   front: {
     type: String,
     required: true,
@@ -15,7 +15,7 @@ const cardSchema = new mongoose.Schema({
   level: {
     type: Number,
     required: true,
-    min: 1,
+    min: 0,
     max: 5,
   },
   creationDate: {

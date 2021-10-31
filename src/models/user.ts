@@ -4,15 +4,18 @@ import mongoose from 'mongoose';
 // import uniqueValidator from 'mongoose-unique-validator';
 import { ExistingUser } from '../types';
 
-const userSchema = new mongoose.Schema({
+const userSchema: mongoose.Schema = new mongoose.Schema({
   name: {
     type: String,
+    required: true,
   },
   surname: {
     type: String,
+    required: true,
   },
   email: {
     type: String,
+    required: true,
     // unique: true,
   },
   passwordHash: {

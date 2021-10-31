@@ -1,9 +1,12 @@
 /* eslint-disable no-shadow */
-export interface ExistingUser {
+import mongoose from 'mongoose';
+
+export interface ExistingUser extends mongoose.Document {
   email: string
   name: string,
   surname: string,
   passwordHash: string,
+  cards: Array<string>,
 }
 
 export interface NewUser {
@@ -18,11 +21,12 @@ export interface UserCredential {
   password: string,
 }
 
-export interface ExistingCard {
+export interface ExistingCard extends mongoose.Document {
   front: string,
   back: string,
   level: number,
-  date: Date,
+  creationDate: Date,
+  checkpointDate: Date,
 }
 
 export interface NewCard {
@@ -31,12 +35,20 @@ export interface NewCard {
   level: number,
 }
 
-export interface decodedToken {
+export interface Token {
+  token: string,
+  name: string,
+  surname: string,
+  email: string,
+}
+
+export interface DecodedToken {
   email: string,
   id: string,
 }
 
 export enum Level {
+  zero = 0,
   One = 1,
   Two = 2,
   Three = 3,
