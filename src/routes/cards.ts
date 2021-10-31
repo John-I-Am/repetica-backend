@@ -41,7 +41,7 @@ cardsRouter.post('/', async (request: Request, response: Response) => {
 });
 
 cardsRouter.delete('/:id', async (request: Request, response: Response) => {
-  await cardService.deleteCard(request.params.id);
+  await cardService.deleteCard(request.params.id, getTokenFrom(request));
   response.status(204).end();
 });
 

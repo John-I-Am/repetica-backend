@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-else-return */
 /* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
@@ -41,7 +42,12 @@ const postCard = async (cardToPost: NewCard, token: string | null) => {
   return savedCard;
 };
 
-const deleteCard = async (id: string) => {
+const deleteCard = async (id: string, token: string | null) => {
+  const decodedResult = jwt.verify(token as string, process.env.SECRET as string) as decodedToken;
+  if (!token || !decodedResult.id) {
+    return false;
+  }
+
   await Card.findByIdAndRemove(id);
 };
 
