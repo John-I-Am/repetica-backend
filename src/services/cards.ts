@@ -61,9 +61,34 @@ const updateCard = async (updatedCard: NewCard, id: string, token: string | null
 
   const cardToUpdate: ExistingCard | null = await Card.findById(id);
   const currentCheckpoint: number = cardToUpdate!.checkpointDate.getTime();
+  let interval = 0;
 
   // formula for adding time: min * 60000
-  const result: ExistingCard | null = await Card.findByIdAndUpdate(id, { ...updatedCard, checkpointDate: new Date(currentCheckpoint + (60 * 60000)) },
+  switch (updatedCard.level) {
+    case 0:
+      interval = (15 * 60000);
+      break;
+    case 1:
+      interval = (120 * 60000);
+      break;
+    case 2:
+      interval = (480 * 60000);
+      break;
+    case 3:
+      interval = (1440 * 60000);
+      break;
+    case 4:
+      interval = (4320 * 60000);
+      break;
+    case 5:
+      interval = (10080 * 60000);
+      break;
+    default:
+      interval = 0;
+      break;
+  }
+
+  const result: ExistingCard | null = await Card.findByIdAndUpdate(id, { ...updatedCard, checkpointDate: new Date(currentCheckpoint + (interval)) },
     { new: true });
 
   return result;
