@@ -1,8 +1,10 @@
 /* eslint-disable max-len */
-import { Response, Request } from 'express';
+import express, { Response, Request } from 'express';
 import cardService from '../services/cards';
 import { ExistingCard, NewCard } from '../types';
 import typeguards from '../typeguards';
+
+const cardsRouter = express.Router();
 
 const getTokenFrom = (request: Request): string | null => {
   const authorization: string | undefined = request.get('authorization');
@@ -11,8 +13,6 @@ const getTokenFrom = (request: Request): string | null => {
   }
   return null;
 };
-
-const cardsRouter = require('express').Router();
 
 cardsRouter.get('/', async (request: Request, response: Response) => {
   const cards = await cardService.getAllCards(getTokenFrom(request));

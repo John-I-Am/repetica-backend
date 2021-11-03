@@ -32,10 +32,13 @@ app.use(middleware.requestLogger);
 app.use('/api/users/', usersRouter);
 app.use('/api/cards/', cardsRouter);
 app.use('/api/login/', loginRouter);
+app.use('/api/testing', testingRouter);
 
-if (process.env.NODE_ENV === 'test') {
-  app.use('/api/testing', testingRouter);
-}
+// function doesn't run? typescipt error?
+
+// if (process.env.NODE_ENV === 'testing') {
+//   app.use('/api/testing', testingRouter);
+// }
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
