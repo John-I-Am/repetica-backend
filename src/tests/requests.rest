@@ -10,7 +10,7 @@ Content-Type: application/json
 
 ###
 POST http://localhost:3001/api/login 
-Content-Type: application/json
+Content-Type: application/json 
 
 {
   "email": "root@root.com", 
@@ -20,23 +20,23 @@ Content-Type: application/json
 ###
 GET http://localhost:3001/api/cards 
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxN2UwZjMxZTRkNjQxZmNiMWZiZTEwMiIsImlhdCI6MTYzNTcwMzAwMSwiZXhwIjoxNjM1NzA2NjAxfQ.H25UiN7TcpIlKzxvxEwuSHj4AN0bnl7B5fjhdx0LNKM
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxODI1NzVlODJhYmQyNjNhYTQ1MTJiYiIsImlhdCI6MTYzNTk5Mjc4MywiZXhwIjoxNjM1OTk2MzgzfQ.DoM3-Y7NKFMY7zUZMWNySfnnOywII21udD_iTnOMr8s
 
 ###
 POST http://localhost:3001/api/cards 
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxN2UwZjMxZTRkNjQxZmNiMWZiZTEwMiIsImlhdCI6MTYzNTcxMjk5NCwiZXhwIjoxNjM1NzE2NTk0fQ.9e5i8zTDLb4co_l7nTVHjqUlpkjE0DFIy2BrfQB8kd0
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxODM0NTRlMDllZDAxOTQzNThiOWQ0MSIsImlhdCI6MTYzNTk5MjkxNCwiZXhwIjoxNjM1OTk2NTE0fQ.U374rMtZZ36AnhiDmaY6GgS66UZjBickja_a6aUNJRI
 
 {
-  "front": 4, 
+  "front": "go", 
   "back": "[]", 
   "level": 2
 }
 
 ###
-PUT http://localhost:3001/api/cards/617e1899083d1b7ae18e9fee
+PUT http://localhost:3001/api/cards/6183457609ed0194358b9d45
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxN2UwZjMxZTRkNjQxZmNiMWZiZTEwMiIsImlhdCI6MTYzNTcxMjk5NCwiZXhwIjoxNjM1NzE2NTk0fQ.9e5i8zTDLb4co_l7nTVHjqUlpkjE0DFIy2BrfQB8kd0
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxODM0NTRlMDllZDAxOTQzNThiOWQ0MSIsImlhdCI6MTYzNTk5MjkxNCwiZXhwIjoxNjM1OTk2NTE0fQ.U374rMtZZ36AnhiDmaY6GgS66UZjBickja_a6aUNJRI
 
 {
   "front": "test", 
@@ -45,6 +45,6 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAc
 }
 
 ###
-DELETE http://localhost:3001/api/cards/617e0f48e4d641fcb1fbe106
+DELETE http://localhost:3001/api/cards/6183457609ed0194358b9d44
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxN2UwZjMxZTRkNjQxZmNiMWZiZTEwMiIsImlhdCI6MTYzNTcwMzAwMSwiZXhwIjoxNjM1NzA2NjAxfQ.H25UiN7TcpIlKzxvxEwuSHj4AN0bnl7B5fjhdx0LNKM
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxODM0NTRlMDllZDAxOTQzNThiOWQ0MSIsImlhdCI6MTYzNTk5MjkxNCwiZXhwIjoxNjM1OTk2NTE0fQ.U374rMtZZ36AnhiDmaY6GgS66UZjBickja_a6aUNJRI

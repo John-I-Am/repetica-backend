@@ -3,7 +3,9 @@ import User from '../models/user';
 import Card from '../models/card';
 
 const nonExistingId = async () => {
-  const card = new Card({ front: 'front', back: 'back', level: 1 });
+  const card = new Card({
+    front: 'front', back: '[]', level: 1,
+  });
   await card.save();
   await card.remove();
 
