@@ -9,7 +9,11 @@ usersRouter.post('/', async (request: Request, response: Response) => {
   const newUser: NewUser = typeguards.toNewUser(request.body);
 
   const result = await userService.addUser(newUser);
-  response.json(result);
+  if ('error' in result) {
+    response.status(400).json(result);
+  } else {
+    response.json(result);
+  }
 });
 
 export default usersRouter;
