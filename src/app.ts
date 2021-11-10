@@ -33,6 +33,9 @@ app.use('/api/users/', usersRouter);
 app.use('/api/cards/', cardsRouter);
 app.use('/api/login/', loginRouter);
 app.use('/api/testing', testingRouter);
+app.get('*', (request, response) => {
+  response.sendFile('index.html', { root: 'build' });
+});
 
 // function doesn't run? typescipt error?
 

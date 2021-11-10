@@ -60,7 +60,7 @@ describe('where there is intially one user', () => {
       .expect(400)
       .expect('Content-Type', /application\/json/);
 
-    expect(result.body.error).toContain('`email` to be unique');
+    expect(result.body.error).toContain('email not unique');
 
     const usersAtEnd = await helper.usersInDb();
     expect(usersAtEnd).toHaveLength(usersAtStart.length);

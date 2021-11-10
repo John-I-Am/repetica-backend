@@ -12,8 +12,9 @@
     "lint": "eslint --ext .ts .",
     "logs:prod": "heroku logs --tail",
     "dev": "NODE_ENV=development ts-node-dev src/index.ts",
-    "start": "NODE_ENV=production npm run tsc && node build-server/index.js",
-    "start:test": "NODE_ENV=test npm run tsc && node build-server/index.js"
+    "start": "NODE_ENV=production node build-server/index.js",
+    "start:test": "NODE_ENV=test npm run tsc && node build-server/index.js",
+    "postinstall": "npm run tsc"
   },
   "author": "",
   "license": "ISC",

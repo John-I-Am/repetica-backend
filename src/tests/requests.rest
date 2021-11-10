@@ -13,7 +13,7 @@ POST http://localhost:3001/api/login
 Content-Type: application/json 
 
 {
-  "email": "root@root.com", 
+  "email": "roott@root.com", 
   "password": "root"
 }
 
@@ -25,7 +25,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAc
 ###
 POST http://localhost:3001/api/cards 
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxODM0NTRlMDllZDAxOTQzNThiOWQ0MSIsImlhdCI6MTYzNTk5MjkxNCwiZXhwIjoxNjM1OTk2NTE0fQ.U374rMtZZ36AnhiDmaY6GgS66UZjBickja_a6aUNJRI
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3R0QHJvb3QuY29tIiwiaWQiOiI2MTg3OTVjMzEzNTc4ODljODk1YzQ3MzQiLCJpYXQiOjE2MzYyNzU2NTYsImV4cCI6MTYzNjI3OTI1Nn0.GkfipMUa0noIphVp0jMz6n--Kn5Ai4qdxOg6Rb8E2_Q
 
 {
   "front": "go", 
