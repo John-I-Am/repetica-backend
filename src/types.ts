@@ -16,6 +16,14 @@ export interface NewUser {
   password: string,
 }
 
+export interface UpdatedUser {
+  email: string,
+  name: string,
+  surname: string,
+  currentPassword: string,
+  newPassword: string,
+}
+
 export interface UserCredential {
   email: string,
   password: string,

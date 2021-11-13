@@ -13,8 +13,8 @@ describe('when there is initally one card saved', () => {
     await Card.deleteMany({});
 
     const userCredentials = {
-      email: 'root@root.com',
-      password: 'root',
+      email: 'updatedroot@root.com',
+      password: 'rootpass',
     };
 
     const result = await api

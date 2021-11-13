@@ -55,7 +55,7 @@ const toNewUser = (object: any): NewUser => {
   const newUser: NewUser = {
     email: parseContent(object.email),
     name: parseContent(object.name),
-    surname: parseContent(object.email),
+    surname: parseContent(object.surname),
     password: parseContent(object.password),
   };
 

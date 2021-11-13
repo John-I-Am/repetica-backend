@@ -1,6 +1,9 @@
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import User from '../models/user';
-import { ExistingUser, NewUser } from '../types';
+import {
+  DecodedToken, ExistingUser, NewUser, UpdatedUser,
+} from '../types';
 
 const addUser = async (user: NewUser): Promise<any> => {
   const saltRounds = 10;
@@ -21,4 +24,45 @@ const addUser = async (user: NewUser): Promise<any> => {
   return { error: 'email not unique' };
 };
 
-export default { addUser };
+const updateUser = async (updatedUser: UpdatedUser, token: string): Promise<any> => {
+  const decodedResult = jwt.verify(token as string, process.env.SECRET as string) as DecodedToken;
+  if (!token || !decodedResult.id) {
+    return { error: 'token missing or invalid' };
+  }
+
+  const currentUser: any = await User.findById(decodedResult.id);
+
+  let newPasswordHash = currentUser.passwordHash;
+
+  if (updatedUser.newPassword != null) {
+    const saltRounds = 10;
+    newPasswordHash = await bcrypt.hash(updatedUser.newPassword, saltRounds);
+
+    const passwordCorrect = currentUser === null
+      ? false
+      : await bcrypt.compare(updatedUser.currentPassword, currentUser.passwordHash);
+
+    if (!(currentUser && passwordCorrect)) {
+      return { error: 'Incorrect Password' };
+    }
+  }
+
+  const emails = (await User.find({})).map((ele:any) => ele.email);
+
+  if (updatedUser !== null && emails.includes(updatedUser.email)) {
+    return { error: 'email not unique' };
+  }
+
+  const user = await User.findByIdAndUpdate(decodedResult.id,
+    {
+      name: updatedUser.name,
+      surname: updatedUser.surname,
+      email: updatedUser.email,
+      passwordHash: newPasswordHash,
+    },
+    { new: true });
+
+  return user;
+};
+
+export default { addUser, updateUser };

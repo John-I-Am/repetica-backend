@@ -12,7 +12,7 @@ loginRouter.post('/', async (request: Request, response: Response): Promise<Exis
 
   if (!result) {
     return response.status(401).json({
-      error: 'invalid email or pssword',
+      error: 'invalid email or password',
     });
   }
 
