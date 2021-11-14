@@ -18,14 +18,25 @@ Content-Type: application/json
 }
 
 ###
+PUT http://localhost:3001/api/Users 
+Content-Type: application/json 
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3R0QHJvb3QuY29tIiwiaWQiOiI2MThlMmM5M2JhYzRjMmY1MmMwOGM5YTMiLCJpYXQiOjE2MzY3MDc0ODUsImV4cCI6MTYzNjcxMTA4NX0.0U2YsxHFz2AlMN5qeTOKuxe6Y34QVZU6SHGiWcvmDHA
+
+{
+  "email": "b@b",
+  "newPassword": "rootroot",
+  "currentPassword": "root"
+}
+
+###
 GET http://localhost:3001/api/cards 
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxODI1NzVlODJhYmQyNjNhYTQ1MTJiYiIsImlhdCI6MTYzNTk5Mjc4MywiZXhwIjoxNjM1OTk2MzgzfQ.DoM3-Y7NKFMY7zUZMWNySfnnOywII21udD_iTnOMr8s
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxODlmZTcyMmY3ZTI4Njk1YWU2ZmQ2YSIsImlhdCI6MTYzNjY4MTI0MSwiZXhwIjoxNjM2Njg0ODQxfQ.C3pRhGBlUFkf-vzHgwNVghJVRhdII8T7jc4W7K1w9xo
 
 ###
 POST http://localhost:3001/api/cards 
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3R0QHJvb3QuY29tIiwiaWQiOiI2MTg3OTVjMzEzNTc4ODljODk1YzQ3MzQiLCJpYXQiOjE2MzYyNzU2NTYsImV4cCI6MTYzNjI3OTI1Nn0.GkfipMUa0noIphVp0jMz6n--Kn5Ai4qdxOg6Rb8E2_Q
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxODlmZTcyMmY3ZTI4Njk1YWU2ZmQ2YSIsImlhdCI6MTYzNjY4MTI0MSwiZXhwIjoxNjM2Njg0ODQxfQ.C3pRhGBlUFkf-vzHgwNVghJVRhdII8T7jc4W7K1w9xo
 
 {
   "front": "go", 
