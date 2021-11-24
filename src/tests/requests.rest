@@ -2,30 +2,34 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-  "email": "root@root.com", 
+  "email": "rooottt@root.com", 
   "name": "rootname", 
   "surname": "rootsur", 
   "password": "root"
 }
 
 ###
+GET http://localhost:3001/api/users 
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb290dHRAcm9vdC5jb20iLCJpZCI6IjYxOTJiYjhmYzljYTc1MWZkMTlkNzk3MyIsImlhdCI6MTYzNzAwNjIzMiwiZXhwIjoxNjM3MDA5ODMyfQ.DxYRyU8qeoh4IDajnWQGBrhnKqpWgflDrt0EqdOoc4A
+
+
+###
 POST http://localhost:3001/api/login 
 Content-Type: application/json 
 
 {
-  "email": "roott@root.com", 
+  "email": "rooottt@root.com", 
   "password": "root"
 }
 
 ###
 PUT http://localhost:3001/api/Users 
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3R0QHJvb3QuY29tIiwiaWQiOiI2MThlMmM5M2JhYzRjMmY1MmMwOGM5YTMiLCJpYXQiOjE2MzY3MDc0ODUsImV4cCI6MTYzNjcxMTA4NX0.0U2YsxHFz2AlMN5qeTOKuxe6Y34QVZU6SHGiWcvmDHA
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb290dHRAcm9vdC5jb20iLCJpZCI6IjYxOTJiYjhmYzljYTc1MWZkMTlkNzk3MyIsImlhdCI6MTYzNzU2MzcxNywiZXhwIjoxNjM3NTY3MzE3fQ.MCfJENO3Vhm82c3O45eUfTAvzP3KToo9PQxahnv6BUc
 
 {
-  "email": "b@b",
-  "newPassword": "rootroot",
-  "currentPassword": "root"
+  "email": "newname@wer",
 }
 
 ###

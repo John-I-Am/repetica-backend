@@ -43,13 +43,6 @@ export interface NewCard {
   level: number,
 }
 
-export interface Token {
-  token: string,
-  name: string,
-  surname: string,
-  email: string,
-}
-
 export interface DecodedToken {
   email: string,
   id: string,

@@ -2,9 +2,9 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
-import { ExistingUser, UserCredential, Token } from '../types';
+import { ExistingUser, UserCredential } from '../types';
 
-const fetchUser = async (userToFetch: UserCredential): Promise<Token |false> => {
+const fetchUser = async (userToFetch: UserCredential): Promise<any> => {
   const user: ExistingUser | null = await User.findOne({ email: userToFetch.email });
   const passwordCorrect = user === null
     ? false
@@ -24,9 +24,6 @@ const fetchUser = async (userToFetch: UserCredential): Promise<Token |false> => 
 
   return {
     token,
-    email: user.email,
-    name: user.name,
-    surname: user.surname,
   };
 };
 

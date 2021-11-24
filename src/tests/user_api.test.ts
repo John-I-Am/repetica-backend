@@ -78,42 +78,54 @@ describe('where there is intially one user', () => {
       .expect(200)
       .expect('Content-Type', /application\/json/);
 
-    expect(result.body).toMatchObject({ email: 'root@root.com', name: 'rootname', surname: 'rootsurname' });
     expect(result.body).toHaveProperty('token');
   });
 
-  test('Successfully change of user details', async () => {
-    const userCredentials = {
-      email: 'root@root.com',
-      password: 'root',
-    };
+  describe('After sucessfully log in', () => {
+    let token: any;
+    beforeEach(async () => {
+      const userCredentials = {
+        email: 'root@root.com',
+        password: 'root',
+      };
 
-    const updatedUser = {
-      email: 'updatedroot@root.com',
-      name: 'updatedname',
-      surname: 'updatedsur',
-      newPassword: 'rootpass',
-      currentPassword: 'root',
-    };
+      const response = await api
+        .post('/api/login')
+        .send(userCredentials);
 
-    const response = await api
-      .post('/api/login')
-      .send(userCredentials)
-      .expect(200)
-      .expect('Content-Type', /application\/json/);
+      token = response.body.token;
+    });
 
-    await api
-      .put('/api/users')
-      .send(updatedUser)
-      .set('Authorization', `bearer ${response.body.token}`)
-      .expect(200)
-      .expect('Content-Type', /application\/json/);
+    test('Successfully fetches user detail with correct status code', async () => {
+      await api
+        .get('/api/users')
+        .set('Authorization', `bearer ${token}`)
+        .expect(200)
+        .expect('Content-Type', /application\/json/);
+    });
 
-    await api
-      .post('/api/login')
-      .send({ email: 'updatedroot@root.com', passsword: 'rootpass' })
-      .expect(400)
-      .expect('Content-Type', /application\/json/);
+    test('Successfully change of user details', async () => {
+      const updatedUser = {
+        email: 'updatedroot@root.com',
+        name: 'updatedname',
+        surname: 'updatedsur',
+        newPassword: 'rootpass',
+        currentPassword: 'root',
+      };
+
+      await api
+        .put('/api/users')
+        .send(updatedUser)
+        .set('Authorization', `bearer ${token}`)
+        .expect(200)
+        .expect('Content-Type', /application\/json/);
+
+      await api
+        .post('/api/login')
+        .send({ email: 'updatedroot@root.com', passsword: 'rootpass' })
+        .expect(400)
+        .expect('Content-Type', /application\/json/);
+    });
   });
 });
 

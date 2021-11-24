@@ -14,6 +14,15 @@ const getTokenFrom = (request: Request): any => {
   return null;
 };
 
+usersRouter.get('/', async (request: Request, response: Response) => {
+  const result = await userService.fetchInfo(getTokenFrom(request));
+  if (result) {
+    response.json(result);
+  } else {
+    response.status(404).end();
+  }
+});
+
 usersRouter.post('/', async (request: Request, response: Response) => {
   const newUser: NewUser = typeguards.toNewUser(request.body);
 

@@ -24,6 +24,17 @@ const addUser = async (user: NewUser): Promise<any> => {
   return { error: 'email not unique' };
 };
 
+const fetchInfo = async (token: string | null) => {
+  const decodedResult = jwt.verify(token as string, process.env.SECRET as string) as DecodedToken;
+  if (!token || !decodedResult.id) {
+    return { error: 'token missing or invalid' };
+  }
+
+  const info = await User.findOne({ _id: decodedResult.id });
+
+  return info;
+};
+
 const updateUser = async (updatedUser: UpdatedUser, token: string): Promise<any> => {
   const decodedResult = jwt.verify(token as string, process.env.SECRET as string) as DecodedToken;
   if (!token || !decodedResult.id) {
@@ -65,4 +76,4 @@ const updateUser = async (updatedUser: UpdatedUser, token: string): Promise<any>
   return user;
 };
 
-export default { addUser, updateUser };
+export default { addUser, updateUser, fetchInfo };
