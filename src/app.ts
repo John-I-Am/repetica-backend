@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import config from './utils/config';
 import usersRouter from './routes/users';
+import decksRouter from './routes/decks';
 import cardsRouter from './routes/cards';
 import loginRouter from './routes/login';
 import testingRouter from './routes/testing';
@@ -30,6 +31,7 @@ app.use(express.json());
 app.use(middleware.requestLogger);
 
 app.use('/api/users/', usersRouter);
+app.use('/api/decks/', decksRouter);
 app.use('/api/cards/', cardsRouter);
 app.use('/api/login/', loginRouter);
 app.get('*', (request, response) => {

@@ -7,6 +7,7 @@ export interface ExistingUser extends mongoose.Document {
   surname: string,
   passwordHash: string,
   cards: Array<string>,
+  decks: Array<string>,
 }
 
 export interface NewUser {
@@ -27,6 +28,12 @@ export interface UpdatedUser {
 export interface UserCredential {
   email: string,
   password: string,
+}
+
+export interface ExistingDeck {
+  title: string,
+  creationDate: Date,
+  cards: Array<string>,
 }
 
 export interface ExistingCard extends mongoose.Document {

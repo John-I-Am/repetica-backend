@@ -28,6 +28,12 @@ const userSchema: mongoose.Schema = new mongoose.Schema({
       ref: 'Card',
     },
   ],
+  decks: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Deck',
+    },
+  ],
 });
 
 // userSchema.plugin(uniqueValidator);

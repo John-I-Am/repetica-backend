@@ -30,6 +30,10 @@ const cardSchema: mongoose.Schema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
+  deck: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Deck',
+  },
 });
 
 cardSchema.set('toJSON', {

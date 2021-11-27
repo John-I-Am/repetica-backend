@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import express, { Response, Request } from 'express';
 import cardService from '../services/cards';
 import { ExistingCard, NewCard } from '../types';
@@ -31,7 +30,7 @@ cardsRouter.get('/:id', async (request: Request, response: Response) => {
 cardsRouter.post('/', async (request: Request, response: Response) => {
   const newCard: NewCard = typeguards.toNewCard(request.body);
   const result: ExistingCard | false = await cardService.postCard(
-    newCard, getTokenFrom(request),
+    request.body.deckId, newCard, getTokenFrom(request),
   );
 
   if (!result) {
