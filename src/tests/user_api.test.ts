@@ -64,6 +64,9 @@ describe('where there is intially one user', () => {
 
     const usersAtEnd = await helper.usersInDb();
     expect(usersAtEnd).toHaveLength(usersAtStart.length);
+
+    const names = usersAtEnd.map((user: any) => user.name);
+    expect(names).not.toContain(newUser.name);
   });
 
   test('login succeeds and returns token', async () => {
@@ -97,14 +100,24 @@ describe('where there is intially one user', () => {
     });
 
     test('Successfully fetches user detail with correct status code', async () => {
-      await api
+      const response = await api
         .get('/api/users')
         .set('Authorization', `bearer ${token}`)
         .expect(200)
         .expect('Content-Type', /application\/json/);
+
+      expect(response.body).toEqual({
+        name: 'rootname',
+        surname: 'rootsurname',
+        email: 'root@root.com',
+        cards: [],
+        decks: [],
+      });
     });
 
     test('Successfully change of user details', async () => {
+      const usersAtStart = await helper.usersInDb();
+
       const updatedUser = {
         email: 'updatedroot@root.com',
         name: 'updatedname',
@@ -113,12 +126,23 @@ describe('where there is intially one user', () => {
         currentPassword: 'root',
       };
 
-      await api
+      const response = await api
         .put('/api/users')
         .send(updatedUser)
         .set('Authorization', `bearer ${token}`)
         .expect(200)
         .expect('Content-Type', /application\/json/);
+
+      expect(response.body).toEqual({
+        name: 'updatedname',
+        surname: 'updatedsur',
+        email: 'updatedroot@root.com',
+        cards: [],
+        decks: [],
+      });
+
+      const usersAtEnd = await helper.usersInDb();
+      expect(usersAtEnd).toHaveLength(usersAtStart.length);
 
       await api
         .post('/api/login')

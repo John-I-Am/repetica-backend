@@ -17,7 +17,6 @@ const getAllCards = async (token: string | null): Promise<ExistingCard[] | false
 
   const cards: ExistingCard[] = await Card.find({ user: decodedResult.id });
 
-  // const cards = await Card.find({}).populate('user', { username: 1, name: 1 });
   return cards;
 };
 

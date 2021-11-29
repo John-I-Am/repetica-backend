@@ -19,6 +19,7 @@ const addUser = async (user: NewUser): Promise<any> => {
     });
 
     const savedUser: ExistingUser = await newUser.save();
+    savedUser.populate('cards');
     return savedUser;
   }
   return { error: 'email not unique' };
@@ -31,6 +32,7 @@ const fetchInfo = async (token: string | null) => {
   }
 
   const info = await User.findOne({ _id: decodedResult.id });
+  info?.populate('cards');
 
   return info;
 };
@@ -72,6 +74,8 @@ const updateUser = async (updatedUser: UpdatedUser, token: string): Promise<any>
       passwordHash: newPasswordHash,
     },
     { new: true });
+
+  user?.populate('cards');
 
   return user;
 };

@@ -1,26 +1,31 @@
 {
   "files": {
-    "main.css": "/static/css/main.e7da6413.chunk.css",
-    "main.js": "/static/js/main.313d7a2d.chunk.js",
-    "main.js.map": "/static/js/main.313d7a2d.chunk.js.map",
+    "main.css": "/static/css/main.225cd720.chunk.css",
+    "main.js": "/static/js/main.c38780ac.chunk.js",
+    "main.js.map": "/static/js/main.c38780ac.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.a52a9901.js",
     "runtime-main.js.map": "/static/js/runtime-main.a52a9901.js.map",
-    "static/js/2.277fa65b.chunk.js": "/static/js/2.277fa65b.chunk.js",
-    "static/js/2.277fa65b.chunk.js.map": "/static/js/2.277fa65b.chunk.js.map",
+    "static/js/2.787844ea.chunk.js": "/static/js/2.787844ea.chunk.js",
+    "static/js/2.787844ea.chunk.js.map": "/static/js/2.787844ea.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.e7da6413.chunk.css.map": "/static/css/main.e7da6413.chunk.css.map",
-    "static/js/2.277fa65b.chunk.js.LICENSE.txt": "/static/js/2.277fa65b.chunk.js.LICENSE.txt",
+    "static/css/main.225cd720.chunk.css.map": "/static/css/main.225cd720.chunk.css.map",
+    "static/js/2.787844ea.chunk.js.LICENSE.txt": "/static/js/2.787844ea.chunk.js.LICENSE.txt",
+    "static/media/audio.abc21ca6.svg": "/static/media/audio.abc21ca6.svg",
     "static/media/cardless.d81d3097.svg": "/static/media/cardless.d81d3097.svg",
     "static/media/hero.e0202b18.svg": "/static/media/hero.e0202b18.svg",
-    "static/media/mobile.f685a89d.svg": "/static/media/mobile.f685a89d.svg",
-    "static/media/post.05c8645a.svg": "/static/media/post.05c8645a.svg",
-    "static/media/repeat.4771f655.svg": "/static/media/repeat.4771f655.svg",
-    "static/media/trend.1f9fa693.svg": "/static/media/trend.1f9fa693.svg"
+    "static/media/mobile.6dfb86ff.svg": "/static/media/mobile.6dfb86ff.svg",
+    "static/media/navIconEdit.eb01a963.svg": "/static/media/navIconEdit.eb01a963.svg",
+    "static/media/navIconExit.3ce4e3c9.svg": "/static/media/navIconExit.3ce4e3c9.svg",
+    "static/media/navIconLearn.ab54abe5.svg": "/static/media/navIconLearn.ab54abe5.svg",
+    "static/media/navIconProfile.b1208d1e.svg": "/static/media/navIconProfile.b1208d1e.svg",
+    "static/media/post.da715ef5.svg": "/static/media/post.da715ef5.svg",
+    "static/media/science.53ee1635.svg": "/static/media/science.53ee1635.svg",
+    "static/media/trend.c1bda30c.svg": "/static/media/trend.c1bda30c.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.a52a9901.js",
-    "static/js/2.277fa65b.chunk.js",
-    "static/css/main.e7da6413.chunk.css",
-    "static/js/main.313d7a2d.chunk.js"
+    "static/js/2.787844ea.chunk.js",
+    "static/css/main.225cd720.chunk.css",
+    "static/js/main.c38780ac.chunk.js"
   ]
 }
