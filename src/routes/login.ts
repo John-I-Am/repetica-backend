@@ -1,24 +1,19 @@
-/* eslint-disable consistent-return */
 import express, { Request, Response } from 'express';
 import loginService from '../services/login';
 import typeguards from '../typeguards';
-import { ExistingUser, UserCredential } from '../types';
+import { UserCredential } from '../types';
 
 const loginRouter = express.Router();
 
-loginRouter.post('/', async (request: Request, response: Response): Promise<ExistingUser | any> => {
+loginRouter.post('/', async (request: Request, response: Response): Promise<void> => {
   const userCredential: UserCredential = typeguards.toUserCredential(request.body);
-  const result = await loginService(userCredential);
+  const result: false | object = await loginService(userCredential);
 
-  if (!result) {
-    return response.status(401).json({
-      error: 'invalid email or password',
-    });
+  if (result) {
+    response.status(200).send(result);
+  } else {
+    response.status(401).json({ error: 'invalid email or password' });
   }
-
-  response
-    .status(200)
-    .send(result);
 });
 
 export default loginRouter;

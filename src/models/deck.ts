@@ -27,6 +27,8 @@ const deckSchema: mongoose.Schema = new mongoose.Schema({
 
 deckSchema.set('toJSON', {
   transform: (_document: any, returnedObject: any) => {
+    returnedObject.id = returnedObject._id.toString();
+    delete returnedObject._id;
     delete returnedObject.__v;
   },
 });

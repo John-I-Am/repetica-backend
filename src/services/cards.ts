@@ -1,80 +1,86 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-else-return */
-/* eslint-disable no-underscore-dangle */
 import jwt from 'jsonwebtoken';
 import Card from '../models/card';
 import Deck from '../models/deck';
 import User from '../models/user';
 import {
-  NewCard, DecodedToken, ExistingCard, ExistingUser,
+  NewCard, DecodedToken, ExistingCard, ExistingUser, ExistingDeck,
 } from '../types';
 
-const getAllCards = async (token: string | null): Promise<ExistingCard[] | false> => {
-  const decodedResult = jwt.verify(token as string, process.env.SECRET as string) as DecodedToken;
+const getAllCards = async (token: string): Promise<ExistingCard[] | false > => {
+  const decodedResult = jwt.verify(token, process.env.SECRET as string) as DecodedToken;
   if (!token || !decodedResult.id) {
     return false;
   }
 
   const cards: ExistingCard[] = await Card.find({ user: decodedResult.id });
-
   return cards;
 };
 
-const getCardById = async (id: string): Promise<ExistingCard | null> => {
+const getCardById = async (id: string, token: string): Promise<ExistingCard | false | null> => {
+  const decodedResult = jwt.verify(token, process.env.SECRET as string) as DecodedToken;
+  if (!token || !decodedResult.id) {
+    return false;
+  }
+
   const card: ExistingCard | null = await Card.findById(id);
+
+  if (!card) {
+    return null;
+  }
   return card;
 };
 
-const postCard = async (
-  deckId: string,
-  cardToPost: NewCard,
-  token: string | null,
-): Promise<ExistingCard | false> => {
-  const decodedResult = jwt.verify(token as string, process.env.SECRET as string) as DecodedToken;
+const postCard = async (deckId: string, cardToPost: NewCard, token: string)
+  : Promise<ExistingCard | false | null> => {
+  const decodedResult = jwt.verify(token, process.env.SECRET as string) as DecodedToken;
   if (!token || !decodedResult.id) {
     return false;
   }
 
   const user: ExistingUser | null = await User.findById(decodedResult.id);
-  const deck: any = await Deck.findById(deckId);
+  const deck: ExistingDeck | null = await Deck.findById(deckId);
+  if (!user || !deck) {
+    return null;
+  }
 
   const card: ExistingCard = new Card({
     ...cardToPost,
     creationDate: new Date(),
     checkpointDate: new Date(),
-    user: user!._id,
-    deck: deck!._id,
+    user: user.id,
+    deck: deck.id,
   });
 
   const savedCard = await card.save();
-  deck!.cards = deck!.cards.concat(savedCard._id);
-  user!.cards = user!.cards.concat(savedCard._id);
-  await user!.save();
+  deck.cards = deck.cards.concat(savedCard.id);
+  user.cards = user.cards.concat(savedCard.id);
+  await user.save();
   await deck.save();
   return savedCard;
 };
 
-const deleteCard = async (id: string, token: string | null): Promise<undefined | false> => {
-  const decodedResult = jwt.verify(token as string, process.env.SECRET as string) as DecodedToken;
+const deleteCard = async (id: string, token: string): Promise<ExistingCard | null | false> => {
+  const decodedResult = jwt.verify(token, process.env.SECRET as string) as DecodedToken;
   if (!token || !decodedResult.id) {
     return false;
   }
 
-  await Card.findByIdAndRemove(id);
+  const card: ExistingCard | null = await Card.findByIdAndRemove(id);
+  return card;
 };
 
-const updateCard = async (
-  updatedCard: NewCard,
-  id: string,
-  token: string | null,
-):
-  Promise<ExistingCard | false | null> => {
-  const decodedResult = jwt.verify(token as string, process.env.SECRET as string) as DecodedToken;
+const updateCard = async (updatedCard: NewCard, id: string, token: string)
+  :Promise<ExistingCard | false | null> => {
+  const decodedResult = jwt.verify(token, process.env.SECRET as string) as DecodedToken;
   if (!token || !decodedResult.id) {
     return false;
   }
 
   const cardToUpdate: ExistingCard | null = await Card.findById(id);
+  if (!cardToUpdate) {
+    return null;
+  }
+
   const currentCheckpoint: number = cardToUpdate!.checkpointDate.getTime();
   let interval = 0;
 

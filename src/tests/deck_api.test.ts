@@ -36,7 +36,7 @@ describe('when there is initally one deck with one card', () => {
       .send(newDeck);
 
     const newCard = {
-      deckId: response.body._id,
+      deckId: response.body.id,
       front: 'front',
       back: '[]',
       level: 1,
@@ -51,7 +51,7 @@ describe('when there is initally one deck with one card', () => {
   test('creation of deck succeeds', async () => {
     const decksAtStart = await helper.decksInDb();
 
-    await api
+    const response = await api
       .post('/api/decks')
       .set('Authorization', `bearer ${token}`)
       .send({ title: 'deck title' })
@@ -60,9 +60,8 @@ describe('when there is initally one deck with one card', () => {
     const decksAtEnd = await helper.decksInDb();
     expect(decksAtEnd).toHaveLength(decksAtStart.length + 1);
 
-    // test fails even though it returns the correct value?
-    // const ids = decksAtEnd.map((deck: any) => deck._id);
-    // expect(ids).toContain(response.body._id);
+    const ids = decksAtEnd.map((deck: any) => deck.id);
+    expect(ids).toContain(response.body.id);
   });
 
   test('creation of card succeeds', async () => {
@@ -73,7 +72,7 @@ describe('when there is initally one deck with one card', () => {
       .post('/api/cards')
       .set('Authorization', `bearer ${token}`)
       .send({
-        deckId: decksAtStart[0]._id, front: 'honey', back: 'test', level: 4,
+        deckId: decksAtStart[0].id, front: 'honey', back: 'test', level: 4,
       })
       .expect(200);
 
@@ -129,7 +128,7 @@ describe('when there is initally one deck with one card', () => {
     const deckToDelete = decksAtStart[0];
 
     await api
-      .delete(`/api/decks/${deckToDelete._id}`)
+      .delete(`/api/decks/${deckToDelete.id}`)
       .set('Authorization', `bearer ${token}`)
       .expect(204);
 
@@ -138,8 +137,8 @@ describe('when there is initally one deck with one card', () => {
       decksAtStart.length - 1,
     );
 
-    const ids = decksAtEnd.map((deck: any) => deck._id);
-    expect(ids).not.toContain(deckToDelete._id);
+    const ids = decksAtEnd.map((deck: any) => deck.id);
+    expect(ids).not.toContain(deckToDelete.id);
   });
 });
 

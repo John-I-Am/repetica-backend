@@ -4,7 +4,7 @@ import User from '../models/user';
 
 const testingRouter = express.Router();
 
-testingRouter.post('/reset', async (request: Request, response: Response) => {
+testingRouter.post('/reset', async (request: Request, response: Response): Promise<void> => {
   await Card.deleteMany({});
   await User.deleteMany({});
 

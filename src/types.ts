@@ -30,10 +30,11 @@ export interface UserCredential {
   password: string,
 }
 
-export interface ExistingDeck {
+export interface ExistingDeck extends mongoose.Document {
   title: string,
   creationDate: Date,
   cards: Array<string>,
+  user: string,
 }
 
 export interface ExistingCard extends mongoose.Document {
@@ -45,6 +46,7 @@ export interface ExistingCard extends mongoose.Document {
 }
 
 export interface NewCard {
+  deckId: string,
   front: string,
   back: string,
   level: number,

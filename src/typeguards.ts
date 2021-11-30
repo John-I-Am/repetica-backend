@@ -34,6 +34,7 @@ const parseLevel = (level: unknown): number => {
 
 const toNewCard = (object: any): NewCard => {
   const newCard: NewCard = {
+    deckId: parseContent(object.deckId),
     front: parseContent(object.front),
     back: parseContent(object.back),
     level: parseLevel(object.level),
