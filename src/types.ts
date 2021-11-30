@@ -38,17 +38,22 @@ export interface ExistingDeck extends mongoose.Document {
 }
 
 export interface ExistingCard extends mongoose.Document {
-  front: string,
-  back: string,
+  type: string,
+  deckId: string,
+  auxiliary: object,
+  front: Object
+  back: Object,
   level: number,
   creationDate: Date,
   checkpointDate: Date,
 }
 
 export interface NewCard {
+  type: string,
   deckId: string,
-  front: string,
-  back: string,
+  auxiliary: object,
+  front: Object,
+  back: Object,
   level: number,
 }
 

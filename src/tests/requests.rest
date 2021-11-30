@@ -36,7 +36,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3R0Q
 ###
 POST http://localhost:3001/api/decks
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3R0QHJvb3QuY29tIiwiaWQiOiI2MWE1OTdhMzlmZGYyOWY1ZDUwMjQ1NDkiLCJpYXQiOjE2MzgyNDIyNTQsImV4cCI6MTYzODI0NTg1NH0.tnSscvHRFD8qsI8CrqdtwK29RUxqumBLOlrOAUX_AGQ
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3R0QHJvb3QuY29tIiwiaWQiOiI2MWE1ZDEwNjNjOGFjNzBjNDFjYzQ4YmQiLCJpYXQiOjE2MzgyNTY5MDMsImV4cCI6MTYzODI2MDUwM30.goGHPXhmvkBpmqIqDgllMQA2VF6YjrGRvuny5GZ_Gck
 
 ###
 PUT http://localhost:3001/api/decks/61a16713731fce3b3ea66758
@@ -65,23 +65,28 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAc
 ###
 POST http://localhost:3001/api/cards 
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3R0QHJvb3QuY29tIiwiaWQiOiI2MWE1OTdhMzlmZGYyOWY1ZDUwMjQ1NDkiLCJpYXQiOjE2MzgyNDIyNTQsImV4cCI6MTYzODI0NTg1NH0.tnSscvHRFD8qsI8CrqdtwK29RUxqumBLOlrOAUX_AGQ
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3R0QHJvb3QuY29tIiwiaWQiOiI2MWE1ZDEwNjNjOGFjNzBjNDFjYzQ4YmQiLCJpYXQiOjE2MzgyNTY5MDMsImV4cCI6MTYzODI2MDUwM30.goGHPXhmvkBpmqIqDgllMQA2VF6YjrGRvuny5GZ_Gck
 
 {
-  "deckId": "61a597da9fdf29f5d502454e",
-  "front": "go", 
-  "back": "[]", 
+  "type": "vocab",
+  "deck": "61a5d1203c8ac70c41cc48c3",
+  "auxillary": { "audio": "url"},
+  "front": { "word": "hello"}, 
+  "back": { "examples": "thisisexamoke"}, 
   "level": 2
 }
 
 ###
-PUT http://localhost:3001/api/cards/6183457609ed0194358b9d45
+PUT http://localhost:3001/api/cards/61a5d1583c8ac70c41cc48d5
 Content-Type: application/json 
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3RAcm9vdC5jb20iLCJpZCI6IjYxYTA3Mjc5NWQ0MGQ1YTE2NDc2ZmRmMCIsImlhdCI6MTYzNzkwNTAyOCwiZXhwIjoxNjM3OTA4NjI4fQ.XGaXAk1LRM8qSEKhv2cqUFTKO2BWw5PAd0N-RREe138
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvb3R0QHJvb3QuY29tIiwiaWQiOiI2MWE1ZDEwNjNjOGFjNzBjNDFjYzQ4YmQiLCJpYXQiOjE2MzgyNTY5MDMsImV4cCI6MTYzODI2MDUwM30.goGHPXhmvkBpmqIqDgllMQA2VF6YjrGRvuny5GZ_Gck
 
 {
-  "front": "test", 
-  "back": "[]", 
+  "type": "vocab",
+  "deck": "61a5d1203c8ac70c41cc48c3",
+  "auxillary": { "audio": "ursl"},
+  "front": { "word": "hellso"}, 
+  "back": { "examples": "thisisexamsoke"}, 
   "level": 2
 }
 

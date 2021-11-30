@@ -47,8 +47,8 @@ const postCard = async (deckId: string, cardToPost: NewCard, token: string)
     ...cardToPost,
     creationDate: new Date(),
     checkpointDate: new Date(),
-    user: user.id,
-    deck: deck.id,
+    userId: user.id,
+    deckId: deck.id,
   });
 
   const savedCard = await card.save();

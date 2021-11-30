@@ -37,7 +37,6 @@ const getUser = async (token: string)
 };
 
 const updateUser = async (updatedUser: UpdatedUser, token: string):
-  // eslint-disable-next-line consistent-return
   Promise<ExistingUser | false | undefined | null> => {
   const decodedResult = jwt.verify(token, process.env.SECRET as string) as DecodedToken;
   if (!token || !decodedResult.id) {
@@ -45,12 +44,18 @@ const updateUser = async (updatedUser: UpdatedUser, token: string):
   }
 
   const currentUser: ExistingUser | null = await User.findById(decodedResult.id);
-  const passwordCorrect = currentUser === null
-    ? false
-    : await bcrypt.compare(updatedUser.currentPassword, currentUser.passwordHash);
+  let newPasswordHash = currentUser?.passwordHash;
+  if (updatedUser.newPassword != null) {
+    const saltRounds = 10;
+    newPasswordHash = await bcrypt.hash(updatedUser.newPassword, saltRounds);
 
-  if (!(currentUser && passwordCorrect)) {
-    return false;
+    const passwordCorrect = currentUser === null
+      ? false
+      : await bcrypt.compare(updatedUser.currentPassword, currentUser.passwordHash);
+
+    if (!(currentUser && passwordCorrect)) {
+      return false;
+    }
   }
 
   const emails = (await User.find({})).map((user: any) => user.email);
@@ -58,20 +63,16 @@ const updateUser = async (updatedUser: UpdatedUser, token: string):
     return null;
   }
 
-  if (updatedUser.newPassword != null) {
-    const newPasswordHash = await bcrypt.hash(updatedUser.newPassword, 10);
+  const newUser = await User.findByIdAndUpdate(decodedResult.id,
+    {
+      name: updatedUser.name,
+      surname: updatedUser.surname,
+      email: updatedUser.email,
+      passwordHash: newPasswordHash,
+    },
+    { new: true }).populate('cards');
 
-    const newUser = await User.findByIdAndUpdate(decodedResult.id,
-      {
-        name: updatedUser.name,
-        surname: updatedUser.surname,
-        email: updatedUser.email,
-        passwordHash: newPasswordHash,
-      },
-      { new: true }).populate('cards');
-
-    return newUser;
-  }
+  return newUser;
 };
 
 export default { addUser, updateUser, getUser };

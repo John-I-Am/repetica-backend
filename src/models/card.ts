@@ -4,12 +4,20 @@ import mongoose from 'mongoose';
 import { ExistingCard } from '../types';
 
 const cardSchema: mongoose.Schema = new mongoose.Schema({
-  front: {
+  type: {
     type: String,
     required: true,
   },
+  auxiliary: {
+    type: Object,
+    required: true,
+  },
+  front: {
+    type: Object,
+    required: true,
+  },
   back: {
-    type: String,
+    type: Object,
     required: true,
   },
   level: {
@@ -26,11 +34,11 @@ const cardSchema: mongoose.Schema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  user: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
-  deck: {
+  deckId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Deck',
   },

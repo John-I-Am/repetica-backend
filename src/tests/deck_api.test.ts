@@ -36,10 +36,12 @@ describe('when there is initally one deck with one card', () => {
       .send(newDeck);
 
     const newCard = {
+      type: 'vocab',
       deckId: response.body.id,
-      front: 'front',
-      back: '[]',
-      level: 1,
+      auxiliary: { audio: 'url' },
+      front: { texts: ['word'] },
+      back: { texts: ['back'] },
+      level: 4,
     };
 
     await api
@@ -72,17 +74,20 @@ describe('when there is initally one deck with one card', () => {
       .post('/api/cards')
       .set('Authorization', `bearer ${token}`)
       .send({
-        deckId: decksAtStart[0].id, front: 'honey', back: 'test', level: 4,
+        type: 'vocab',
+        deckId: decksAtStart[0].id,
+        auxiliary: { audio: 'url' },
+        front: { texts: ['word'] },
+        back: { texts: ['back'] },
+        level: 4,
       })
       .expect(200);
 
     const cardsAtEnd = await helper.cardsInDb();
     expect(cardsAtEnd).toHaveLength(cardsAtStart.length + 1);
 
-    const contents = cardsAtEnd.map((card: any) => card.front);
-    expect(contents).toContain(
-      'honey',
-    );
+    const contents = cardsAtEnd.map((card: any) => card.front.texts);
+    expect(contents).toContainEqual(['word']);
   });
 
   test('All cards are returned', async () => {
@@ -99,7 +104,7 @@ describe('when there is initally one deck with one card', () => {
     const decksAtStart = await helper.decksInDb();
 
     const response = await api
-      .get('/api/cards')
+      .get('/api/decks')
       .set('Authorization', `bearer ${token}`);
 
     expect(response.body).toHaveLength(decksAtStart.length);
